@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <Layout className='layout'>
             <MainHeader />
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
         </Layout>
     );
 }
