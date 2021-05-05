@@ -33,6 +33,7 @@ export default connectDB(
                     return {};
                 }
             })
-        ]
+        ],
+        site: process.env.NEXTAUTH_URL
     })
 );
