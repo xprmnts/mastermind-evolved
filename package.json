@@ -1,22 +1,22 @@
 {
-  "name": "mastermind-evolved",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@zeit/next-css": "^1.0.1",
-    "antd": "^4.15.4",
-    "bcrypt": "^5.0.1",
-    "mongodb": "^3.6.6",
-    "mongoose": "^5.12.7",
-    "next": "10.2.0",
-    "next-auth": "^3.19.8",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "validator": "^13.6.0"
-  }
+    "name": "mastermind-evolved",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start -p $PORT"
+    },
+    "dependencies": {
+        "@zeit/next-css": "^1.0.1",
+        "antd": "^4.15.4",
+        "bcrypt": "^5.0.1",
+        "mongodb": "^3.6.6",
+        "mongoose": "^5.12.7",
+        "next": "10.2.0",
+        "next-auth": "^3.19.8",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "validator": "^13.6.0"
+    }
 }
