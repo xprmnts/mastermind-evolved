@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { signIn } from 'next-auth/client';
+import { useRouter } from 'next/router';
 import { Form, Input, Button, Row, Col } from 'antd';
 
 async function createUser(username, password) {
@@ -43,8 +45,9 @@ async function handleUsernameValidation(username) {
 
 function AuthForm() {
     const [isLogin, setIsLogin] = useState(false);
+    const [formError, setFormError] = useState('');
 
-    const validateUnique = true;
+    const router = useRouter();
 
     function switchAuthModeHandler() {
         setIsLogin(prevState => !prevState);
@@ -56,7 +59,15 @@ function AuthForm() {
 
     const onFinish = async values => {
         if (isLogin) {
-            // log in user
+            const result = await signIn('credentials', {
+                redirect: false,
+                username: values.username,
+                password: values.password
+            });
+            if (!result.error) {
+                router.replace('/profile');
+            }
+            setFormError(result.error);
         } else {
             try {
                 const result = await createUser(
@@ -137,6 +148,7 @@ function AuthForm() {
                         </Button>
                     </Form.Item>
                 </Form>
+                {formError && formError.length > 0 && <p>{formError}</p>}
             </Col>
         </Row>
     );
