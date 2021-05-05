@@ -1,0 +1,15 @@
+.auth-form-container {
+    height: 100vh;
+}
+
+.auth-form {
+    margin-top: -20rem;
+}
+
+.auth-form button {
+    width: 100%;
+}
+
+.auth-form h1 {
+    text-align: center;
+}

@@ -15,10 +15,14 @@ function MainHeader() {
                     <nav>
                         <ul>
                             <li>
-                                <Link href='/auth'>Login</Link>
+                                <Link href='/auth'>
+                                    <Button type='link'>Login</Button>
+                                </Link>
                             </li>
                             <li>
-                                <Link href='/profile'>Profile</Link>
+                                <Link href='/profile'>
+                                    <Button type='link'>Profile</Button>
+                                </Link>
                             </li>
                             <li>
                                 <Button type='primary'>Logout</Button>
