@@ -19,8 +19,32 @@ async function createUser(username, password) {
     return data;
 }
 
+async function handleUsernameValidation(username) {
+    try {
+        const response = await fetch('/api/auth/validate-user', {
+            method: 'POST',
+            body: JSON.stringify({ username }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Something went wrong!');
+        }
+    } catch (error) {
+        return Promise.reject(error.message);
+    }
+
+    return Promise.resolve(true);
+}
+
 function AuthForm() {
     const [isLogin, setIsLogin] = useState(false);
+
+    const validateUnique = true;
 
     function switchAuthModeHandler() {
         setIsLogin(prevState => !prevState);
@@ -34,8 +58,6 @@ function AuthForm() {
         if (isLogin) {
             // log in user
         } else {
-            console.log('Success:', values);
-
             try {
                 const result = await createUser(
                     values.username,
@@ -66,25 +88,37 @@ function AuthForm() {
                 >
                     <Form.Item
                         name='username'
+                        validateTrigger='onBlur'
                         rules={[
                             {
                                 required: true,
-                                message: 'Your username'
-                            }
+                                message: 'Username is required.'
+                            },
+                            () => ({
+                                validator(_, value) {
+                                    if (!isLogin) {
+                                        return handleUsernameValidation(value);
+                                    }
+                                    return Promise.resolve();
+                                }
+                            })
                         ]}
                     >
-                        <Input placeholder='Username' />
+                        <Input placeholder='Username' autoComplete='on' />
                     </Form.Item>
                     <Form.Item
                         name='password'
                         rules={[
                             {
                                 required: true,
-                                message: 'Your password'
+                                message: 'Password is required.'
                             }
                         ]}
                     >
-                        <Input.Password placeholder='Password' />
+                        <Input.Password
+                            placeholder='Password'
+                            autoComplete='on'
+                        />
                     </Form.Item>
                     <Form.Item>
                         <Button type='primary' htmlType='submit'>
