@@ -5,12 +5,12 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start -p $PORT"
+        "start": "next start"
     },
     "dependencies": {
         "@zeit/next-css": "^1.0.1",
         "antd": "^4.15.4",
-        "bcrypt": "^5.0.1",
+        "bcryptjs": "^2.4.3",
         "mongodb": "^3.6.6",
         "mongoose": "^5.12.7",
         "next": "10.2.0",

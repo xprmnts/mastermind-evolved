@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import connectDB from '../../../middleware/db';
