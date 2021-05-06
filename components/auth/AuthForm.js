@@ -107,6 +107,7 @@ function AuthForm() {
                     <Form.Item
                         name='username'
                         validateTrigger='onBlur'
+                        validateFirst='true'
                         rules={[
                             {
                                 required: true,
@@ -121,6 +122,7 @@ function AuthForm() {
                                 }
                             })
                         ]}
+                        hasFeedback
                     >
                         <Input placeholder='Username' autoComplete='on' />
                     </Form.Item>
