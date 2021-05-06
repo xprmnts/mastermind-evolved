@@ -3,45 +3,8 @@ import { signIn } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import { Form, Input, Button, Row, Col } from 'antd';
 
-async function createUser(username, password) {
-    const response = await fetch('/api/auth/signup', {
-        method: 'POST',
-        body: JSON.stringify({ username, password }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong!');
-    }
-
-    return data;
-}
-
-async function handleUsernameValidation(username) {
-    try {
-        const response = await fetch('/api/auth/validate-user', {
-            method: 'POST',
-            body: JSON.stringify({ username }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.message || 'Something went wrong!');
-        }
-    } catch (error) {
-        return Promise.reject(error.message);
-    }
-
-    return Promise.resolve(true);
-}
+import createUser from '../../helpers/auth/createUser';
+import handleUsernameValidation from '../../helpers/auth/handleUsernameValidation';
 
 function AuthForm() {
     const [isLogin, setIsLogin] = useState(true);
