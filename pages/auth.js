@@ -6,6 +6,7 @@ function AuthPage() {
 }
 
 export async function getServerSideProps(context) {
+    console.log(process.env.NEXTAUTH_URL);
     const session = await getSession({ req: context.req });
 
     if (session) {
