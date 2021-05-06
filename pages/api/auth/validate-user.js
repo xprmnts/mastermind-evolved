@@ -7,9 +7,7 @@ const handler = async (req, res) => {
 
         if (username) {
             try {
-                console.log(username);
                 // find if user already exists
-
                 const existingUser = await User.find({ username }).exec();
 
                 if (existingUser.length) {

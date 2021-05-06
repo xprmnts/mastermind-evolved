@@ -44,7 +44,7 @@ async function handleUsernameValidation(username) {
 }
 
 function AuthForm() {
-    const [isLogin, setIsLogin] = useState(false);
+    const [isLogin, setIsLogin] = useState(true);
     const [formError, setFormError] = useState('');
 
     const router = useRouter();
@@ -70,11 +70,18 @@ function AuthForm() {
             setFormError(result.error);
         } else {
             try {
-                const result = await createUser(
+                const create = await createUser(
                     values.username,
                     values.password
                 );
-                console.log(result);
+                const result = await signIn('credentials', {
+                    redirect: false,
+                    username: values.username,
+                    password: values.password
+                });
+                if (!result.error) {
+                    router.replace('/profile');
+                }
             } catch (error) {
                 console.log(error);
             }
