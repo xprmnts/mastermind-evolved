@@ -1,5 +1,5 @@
 import connectDB from '../../../middleware/db';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import User from '../../../models/user';
 
 const handler = async (req, res) => {
