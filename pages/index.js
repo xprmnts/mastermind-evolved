@@ -1,7 +1,7 @@
 export default function Home() {
     return (
         <main>
-            <h1>Mastermind Landing Page</h1>
+            <h1 className='landing-page-header'>Mastermind Landing Page</h1>
         </main>
     );
 }

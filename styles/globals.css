@@ -18,3 +18,7 @@ a {
 * {
     box-sizing: border-box;
 }
+
+.landing-page-header {
+    text-align: center;
+}
