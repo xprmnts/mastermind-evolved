@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function GameBoard() {
+    const userName = useSelector(state => state.user.userName);
+
     useEffect(() => {
+        console.log(userName);
         console.log('initialize game');
     }, []);
 

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { signIn } from 'next-auth/client';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { userActions } from '../../store/user-slice';
 import { Form, Input, Button, Row, Col } from 'antd';
 
 import createUser from '../../helpers/auth/createUser';
@@ -11,6 +13,7 @@ function AuthForm() {
     const [formError, setFormError] = useState('');
 
     const router = useRouter();
+    const dispatch = useDispatch();
 
     function switchAuthModeHandler() {
         setIsLogin(prevState => !prevState);
@@ -29,6 +32,11 @@ function AuthForm() {
             });
             if (!result.error) {
                 router.replace('/dashboard');
+                dispatch(
+                    userActions.authenticate({
+                        username: values.username
+                    })
+                );
             }
             setFormError(result.error);
         } else {
@@ -43,6 +51,11 @@ function AuthForm() {
                     password: values.password
                 });
                 if (!result.error) {
+                    dispatch(
+                        userActions.authenticate({
+                            username: values.username
+                        })
+                    );
                     router.replace('/dashboard');
                 }
             } catch (error) {

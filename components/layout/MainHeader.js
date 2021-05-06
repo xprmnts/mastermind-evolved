@@ -2,17 +2,19 @@ import Link from 'next/link';
 import { Layout, Button, Row, Col } from 'antd';
 import { useRouter } from 'next/router';
 import { useSession, signOut } from 'next-auth/client';
+import { useDispatch } from 'react-redux';
+import { userActions } from '../../store/user-slice';
 const { Header } = Layout;
 
 function MainHeader() {
     const [session, loading] = useSession();
     const router = useRouter();
+    const dispatch = useDispatch();
 
-    function logoutHandler() {
-        signOut({
-            redirect: false
-        });
-        router.replace('/auth');
+    async function logoutHandler() {
+        const data = await signOut({ redirect: false, callbackUrl: '/auth' });
+        dispatch(userActions.deAuthenticate());
+        router.push(data.url);
     }
 
     return (
