@@ -35,7 +35,7 @@ function MainHeader() {
                             )}
                             {session && (
                                 <li>
-                                    <Link href='/profile'>
+                                    <Link href='/dashboard'>
                                         <Button type='link'>Profile</Button>
                                     </Link>
                                 </li>

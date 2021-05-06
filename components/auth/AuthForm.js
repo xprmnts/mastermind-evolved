@@ -65,7 +65,7 @@ function AuthForm() {
                 password: values.password
             });
             if (!result.error) {
-                router.replace('/profile');
+                router.replace('/dashboard');
             }
             setFormError(result.error);
         } else {
@@ -80,7 +80,7 @@ function AuthForm() {
                     password: values.password
                 });
                 if (!result.error) {
-                    router.replace('/profile');
+                    router.replace('/dashboard');
                 }
             } catch (error) {
                 console.log(error);
