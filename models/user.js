@@ -18,8 +18,12 @@ const user = new Schema({
     }
 });
 
-mongoose.models = {};
+user.virtual('games', {
+    ref: 'Game',
+    localField: '_id',
+    foreignField: 'player'
+});
 
-const User = mongoose.model('User', user);
+const User = mongoose.models.User || mongoose.model('User', user);
 
 export default User;
