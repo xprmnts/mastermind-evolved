@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="173px" height="19px" viewBox="0 0 173 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>MASTERMIND</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="50.6605892%" x2="100%" y2="50.6607287%" id="linearGradient-1">
+            <stop stop-color="#FF0000" offset="0%"></stop>
+            <stop stop-color="#FF8A00" offset="12.4787415%"></stop>
+            <stop stop-color="#FFEB17" offset="26.9424127%"></stop>
+            <stop stop-color="#38FF2E" offset="41.6070432%"></stop>
+            <stop stop-color="#4384C3" offset="55.3146259%"></stop>
+            <stop stop-color="#B25DAF" offset="68.6081659%"></stop>
+            <stop stop-color="#D3359F" offset="82.0571588%"></stop>
+            <stop stop-color="#FF008A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Rockwell-Regular, Rockwell" font-size="24" font-weight="normal">
+        <g id="Mobile-Homepage" transform="translate(-73.000000, -172.000000)" fill="url(#linearGradient-1)">
+            <text id="MASTERMIND">
+                <tspan x="73" y="190">MASTERMIND</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

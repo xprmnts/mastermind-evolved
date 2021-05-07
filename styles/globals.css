@@ -22,3 +22,22 @@ a {
 .landing-page-header {
     text-align: center;
 }
+
+.game-container {
+    max-width: 40rem;
+    margin: auto;
+}
+
+.table-container {
+    max-width: 25rem;
+    margin: auto;
+}
+
+.action-container {
+    max-width: 25rem;
+    margin: auto;
+}
+
+.slot-input {
+    width: 20%;
+}

@@ -6,7 +6,8 @@ const gameSlice = createSlice({
         gameId: null,
         status: null,
         attemptsAllowed: null,
-        attemptsUsed: null
+        attemptsUsed: null,
+        history: []
     },
     reducers: {
         startGame(state, action) {
