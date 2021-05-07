@@ -1,6 +1,6 @@
 import connectDB from '../../../middleware/db';
 import Game from '../../../models/game';
-import User from '../../../models/user';
+import generateSecretCode from '../../../helpers/game/generateSecretCode';
 
 const handler = async (req, res) => {
     if (req.method === 'POST') {
@@ -8,17 +8,10 @@ const handler = async (req, res) => {
         const { userId } = req.body;
 
         if (userId) {
-            // let existingUser;
-
-            // try {
-            //     existingUser = await User.findById(userId).exec();
-            // } catch (error) {
-            //     return res.status(500).send(error.message);
-            // }
+            // generate secretCode
+            const secret = await generateSecretCode();
 
             try {
-                // generate secretCode
-                const secret = '1234';
                 const game = new Game({
                     user: userId,
                     secretCode: secret
