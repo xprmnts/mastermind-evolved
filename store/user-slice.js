@@ -2,16 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const userSlice = createSlice({
     name: 'user',
-    initialState: { userName: null },
+    initialState: { username: null, userId: null },
     reducers: {
         authenticate(state, action) {
-            state.userName = action.payload.username;
+            state.username = action.payload.username;
+            state.userId = action.payload.userId;
             // receives user payload
             //
         },
         deAuthenticate(state) {
             // set's app state to be unauthenticated
-            state.userName = null;
+            state.username = null;
+            state.userId = null;
         }
     }
 });

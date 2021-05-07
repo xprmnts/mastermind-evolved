@@ -7,9 +7,10 @@ const game = new Schema({
         required: true,
         ref: 'User'
     },
-    isFinished: {
-        type: Boolean,
-        default: false
+    status: {
+        type: String,
+        enum: ['WON', 'LOST', 'PLAYING'],
+        default: 'PLAYING'
     },
     started: {
         type: Date,
@@ -23,7 +24,7 @@ const game = new Schema({
         type: Number,
         default: 10
     },
-    attemptedUsed: {
+    attemptsUsed: {
         type: Number,
         default: 0
     }

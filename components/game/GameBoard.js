@@ -1,12 +1,39 @@
+import axios from 'axios';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { gameActions } from '../../store/game-slice';
 
 export default function GameBoard() {
-    const userName = useSelector(state => state.user.userName);
+    const userId = useSelector(state => state.user.userId);
+    const dispatch = useDispatch();
+
+    const createGameRequest = async userId => {
+        try {
+            const resp = await axios.post('/api/game/create', {
+                userId: userId
+            });
+
+            const { _id, status, attemptsAllowed, attemptsUsed } = resp.data;
+
+            dispatch(
+                gameActions.startGame({
+                    _id,
+                    status,
+                    attemptsAllowed,
+                    attemptsUsed
+                })
+            );
+        } catch (err) {
+            // Handle Error Here
+            console.error(err);
+        }
+    };
 
     useEffect(() => {
-        console.log(userName);
-        console.log('initialize game');
+        // create game
+        //console.log(username);
+        createGameRequest(userId);
+        // TODO: load existing game
     }, []);
 
     return (

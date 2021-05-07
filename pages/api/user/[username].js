@@ -4,11 +4,11 @@ import User from '../../../models/user';
 const handler = async (req, res) => {
     if (req.method === 'GET') {
         // Check if userId is provided
-        const { userid } = req.query;
+        const { username } = req.query;
 
-        if (userid) {
+        if (username) {
             try {
-                const user = await User.findById(userid);
+                const user = await User.findOne({ username });
                 await user.populate('games').execPopulate();
 
                 return res.status(201).send(user.games);

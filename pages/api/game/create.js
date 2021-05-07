@@ -1,5 +1,6 @@
 import connectDB from '../../../middleware/db';
 import Game from '../../../models/game';
+import User from '../../../models/user';
 
 const handler = async (req, res) => {
     if (req.method === 'POST') {
@@ -7,6 +8,14 @@ const handler = async (req, res) => {
         const { userId } = req.body;
 
         if (userId) {
+            // let existingUser;
+
+            // try {
+            //     existingUser = await User.findById(userId).exec();
+            // } catch (error) {
+            //     return res.status(500).send(error.message);
+            // }
+
             try {
                 // generate secretCode
                 const secret = '1234';

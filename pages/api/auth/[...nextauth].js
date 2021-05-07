@@ -9,10 +9,27 @@ export default connectDB(
         session: {
             jwt: true
         },
+        callbacks: {
+            async session(session, token) {
+                session.username = token.username;
+                session.userId = token.userId;
+
+                return session;
+            },
+            async jwt(token, user) {
+                // Add access_token to the token right after signin
+                if (user?.userId) {
+                    token.userId = user.userId;
+                    token.username = user.username;
+                }
+
+                return token;
+            }
+        },
         providers: [
             Providers.Credentials({
                 async authorize(credentials) {
-                    const { username } = credentials;
+                    const { username, password } = credentials;
                     const existingUser = await User.findOne({
                         username
                     }).exec();
@@ -22,15 +39,18 @@ export default connectDB(
                     }
 
                     const isValid = await bcrypt.compare(
-                        credentials.password,
+                        password,
                         existingUser.password
                     );
 
                     if (!isValid) {
                         throw new Error('Invalid username or password!');
                     }
-
-                    return {};
+                    const user = {
+                        userId: existingUser._id,
+                        username: existingUser.username
+                    };
+                    return user;
                 }
             })
         ]

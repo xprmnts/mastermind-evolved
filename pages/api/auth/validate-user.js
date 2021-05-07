@@ -8,9 +8,9 @@ const handler = async (req, res) => {
         if (username) {
             try {
                 // find if user already exists
-                const existingUser = await User.find({ username }).exec();
+                const existingUser = await User.findOne({ username }).exec();
 
-                if (existingUser.length) {
+                if (existingUser) {
                     res.status(422).json({ message: 'User exists already!' });
                     return;
                 } else {

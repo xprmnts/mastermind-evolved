@@ -19,10 +19,6 @@ function AuthForm() {
         setIsLogin(prevState => !prevState);
     }
 
-    const onSubmitHandler = event => {
-        console.log('form submitted');
-    };
-
     const onFinish = async values => {
         if (isLogin) {
             const result = await signIn('credentials', {
@@ -78,7 +74,6 @@ function AuthForm() {
                     name='auth'
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
-                    onSubmit={onSubmitHandler}
                 >
                     <Form.Item
                         name='username'
